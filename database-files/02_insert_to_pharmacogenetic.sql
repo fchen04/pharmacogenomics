@@ -1,70 +1,310 @@
 USE PharmacogeneticAppDB;
 
 -- ------------------------------------------------------------
--- Sample Data Inserts for System Users
+-- Sample Data Inserts for DOCTOR Table 
 -- ------------------------------------------------------------
-
 INSERT INTO DOCTOR (Name, Specialty) VALUES
 ('Dr. Emily Zhang', 'Family Medicine'),
-('Dr. John Smith', 'Cardiology');
+('Dr. John Smith', 'Cardiology'),
+('Dr. Sarah Turner', 'Neurology'),
+('Dr. Michael Davis', 'Oncology'),
+('Dr. Jessica Li', 'Pediatrics'),
+('Dr. David Chen', 'Orthopedics'),
+('Dr. William Harris', 'Dermatology'),
+('Dr. Linda Martinez', 'Psychiatry'),
+('Dr. James Wilson', 'Gastroenterology'),
+('Dr. Karen Clark', 'Pulmonology'),
+('Dr. Ryan Miller', 'Rheumatology'),
+('Dr. Susan Taylor', 'Nephrology'),
+('Dr. Benjamin Walker', 'Radiology'),
+('Dr. Jennifer Moore', 'Emergency Medicine'),
+('Dr. Timothy Lee', 'Endocrinology'),
+('Dr. Anna Adams', 'Ophthalmology'),
+('Dr. Charles King', 'ENT'),
+('Dr. Emily White', 'Obstetrics and Gynecology'),
+('Dr. George Johnson', 'Cardiology'),
+('Dr. Nancy Lewis', 'Pediatrics'),
+('Dr. Rachel Harris', 'Oncology'),
+('Dr. Steven Robinson', 'Psychiatry'),
+('Dr. Patricia Campbell', 'Surgery'),
+('Dr. Andrew Walker', 'Geriatrics'),
+('Dr. Olivia Phillips', 'Plastic Surgery'),
+('Dr. Barbara Young', 'Hematology'),
+('Dr. Thomas Scott', 'Immunology'),
+('Dr. Elizabeth Green', 'Rheumatology'),
+('Dr. Brian Allen', 'Dermatology');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for PATIENT Table 
+-- ------------------------------------------------------------
 INSERT INTO PATIENT (Name, Age, ContactInfo) VALUES
 ('Sarah Johnson', 45, 'sarah.johnson@example.com'),
-('Michael Brown', 60, 'michael.brown@example.com');
+('Michael Brown', 60, 'michael.brown@example.com'),
+('James Williams', 32, 'james.williams@example.com'),
+('Patricia Garcia', 57, 'patricia.garcia@example.com'),
+('Robert Rodriguez', 49, 'robert.rodriguez@example.com'),
+('David Martinez', 40, 'david.martinez@example.com'),
+('Linda Wilson', 65, 'linda.wilson@example.com'),
+('Michael Anderson', 70, 'michael.anderson@example.com'),
+('Elizabeth Clark', 56, 'elizabeth.clark@example.com'),
+('William Moore', 63, 'william.moore@example.com'),
+('Susan Taylor', 54, 'susan.taylor@example.com'),
+('Karen Hall', 45, 'karen.hall@example.com'),
+('Jennifer King', 52, 'jennifer.king@example.com'),
+('Jessica Lee', 39, 'jessica.lee@example.com'),
+('Ryan Scott', 29, 'ryan.scott@example.com'),
+('George Harris', 64, 'george.harris@example.com'),
+('Patricia Young', 41, 'patricia.young@example.com'),
+('Andrew Davis', 38, 'andrew.davis@example.com'),
+('Nancy Robinson', 58, 'nancy.robinson@example.com'),
+('Jessica Adams', 34, 'jessica.adams@example.com'),
+('Rachel White', 43, 'rachel.white@example.com'),
+('Emily Walker', 50, 'emily.walker@example.com'),
+('Charles Clark', 60, 'charles.clark@example.com'),
+('Thomas Lewis', 61, 'thomas.lewis@example.com'),
+('Olivia Harris', 46, 'olivia.harris@example.com'),
+('Barbara Lee', 48, 'barbara.lee@example.com'),
+('Timothy Scott', 36, 'timothy.scott@example.com'),
+('Jennifer Robinson', 61, 'jennifer.robinson@example.com'),
+('Joseph Taylor', 62, 'joseph.taylor@example.com'),
+('Deborah Green', 44, 'deborah.green@example.com');
 
-INSERT INTO DATA_SOURCE (Name, Type) VALUES
-('GenLab Inc.', 'Genetic Lab'),
-('City Hospital', 'Hospital');
-
-INSERT INTO GENETIC_PROFILE (PatientID, TestDate, GeneticMarkers, SourceID) VALUES
-(1, '2025-01-15', 'MarkerA, MarkerB', 1),
-(2, '2025-02-10', 'MarkerC, MarkerD', 2);
-
+-- ------------------------------------------------------------
+-- Sample Data Inserts for MEDICATION Table
+-- ------------------------------------------------------------
 INSERT INTO MEDICATION (Name, Indications, DosageGuidelines) VALUES
 ('Metformin', 'Type 2 Diabetes', '500 mg twice daily'),
-('Lisinopril', 'Hypertension', '10 mg once daily');
+('Lisinopril', 'Hypertension', '10 mg once daily'),
+('Aspirin', 'Pain relief', '81 mg daily'),
+('Ibuprofen', 'Pain relief', '200 mg every 4-6 hours'),
+('Paracetamol', 'Pain relief', '500 mg every 4-6 hours'),
+('Simvastatin', 'Cholesterol', '20 mg once daily'),
+('Omeprazole', 'Gastroesophageal reflux disease (GERD)', '20 mg once daily'),
+('Furosemide', 'Edema', '40 mg once daily'),
+('Sertraline', 'Depression', '50 mg once daily'),
+('Hydrochlorothiazide', 'Hypertension', '25 mg once daily'),
+('Gabapentin', 'Neuropathy', '300 mg three times daily'),
+('Allopurinol', 'Gout', '100 mg once daily'),
+('Levothyroxine', 'Hypothyroidism', '50 mcg once daily'),
+('Amlodipine', 'Hypertension', '5 mg once daily'),
+('Clopidogrel', 'Blood thinners', '75 mg once daily'),
+('Citalopram', 'Depression', '10 mg once daily'),
+('Metoprolol', 'Hypertension', '50 mg once daily'),
+('Warfarin', 'Blood thinners', '5 mg once daily'),
+('Fluoxetine', 'Depression', '20 mg once daily'),
+('Losartan', 'Hypertension', '50 mg once daily'),
+('Propranolol', 'Hypertension', '40 mg twice daily'),
+('Pantoprazole', 'GERD', '40 mg once daily'),
+('Eliquis', 'Blood thinners', '5 mg twice daily'),
+('Prednisone', 'Inflammation', '10 mg once daily'),
+('Doxycycline', 'Infection', '100 mg once daily'),
+('Ciprofloxacin', 'Infection', '500 mg twice daily'),
+('Mirtazapine', 'Depression', '15 mg once nightly'),
+('Pregabalin', 'Neuropathy', '150 mg once daily');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for GENETIC_PROFILE Table
+-- ------------------------------------------------------------
+INSERT INTO GENETIC_PROFILE (PatientID, TestDate, GeneticMarkers, SourceID) VALUES
+(1, '2025-01-15', 'MarkerA, MarkerB', 1),
+(2, '2025-02-10', 'MarkerC, MarkerD', 2),
+(3, '2025-03-20', 'MarkerE, MarkerF', 1),
+(4, '2025-04-11', 'MarkerG, MarkerH', 2),
+(5, '2025-05-30', 'MarkerI, MarkerJ', 1),
+(6, '2025-06-14', 'MarkerK, MarkerL', 2),
+(7, '2025-07-02', 'MarkerM, MarkerN', 1),
+(8, '2025-08-15', 'MarkerO, MarkerP', 2),
+(9, '2025-09-10', 'MarkerQ, MarkerR', 1),
+(10, '2025-10-03', 'MarkerS, MarkerT', 2),
+(11, '2025-11-07', 'MarkerU, MarkerV', 1),
+(12, '2025-12-20', 'MarkerW, MarkerX', 2),
+(13, '2026-01-10', 'MarkerY, MarkerZ', 1),
+(14, '2026-02-15', 'MarkerAA, MarkerBB', 2),
+(15, '2026-03-28', 'MarkerCC, MarkerDD', 1),
+(16, '2026-04-04', 'MarkerEE, MarkerFF', 2),
+(17, '2026-05-19', 'MarkerGG, MarkerHH', 1),
+(18, '2026-06-22', 'MarkerII, MarkerJJ', 2),
+(19, '2026-07-13', 'MarkerKK, MarkerLL', 1),
+(20, '2026-08-30', 'MarkerMM, MarkerNN', 2),
+(21, '2026-09-25', 'MarkerOO, MarkerPP', 1),
+(22, '2026-10-17', 'MarkerQQ, MarkerRR', 2),
+(23, '2026-11-09', 'MarkerSS, MarkerTT', 1),
+(24, '2026-12-01', 'MarkerUU, MarkerVV', 2),
+(25, '2027-01-20', 'MarkerWW, MarkerXX', 1),
+(26, '2027-02-22', 'MarkerYY, MarkerZZ', 2),
+(27, '2027-03-16', 'MarkerAAA, MarkerBBB', 1),
+(28, '2027-04-05', 'MarkerCCC, MarkerDDD', 2),
+(29, '2027-05-25', 'MarkerEEE, MarkerFFF', 1),
+(30, '2027-06-12', 'MarkerGGG, MarkerHHH', 2);
+
+-- ------------------------------------------------------------
+-- Sample Data Inserts for PRESCRIPTION Table 
+-- ------------------------------------------------------------
 INSERT INTO PRESCRIPTION (PatientID, DoctorID, MedicationID, Date) VALUES
 (1, 1, 1, '2025-03-01'),
-(2, 2, 2, '2025-03-05');
+(2, 2, 2, '2025-03-05'),
+(3, 3, 3, '2025-04-01'),
+(4, 4, 4, '2025-04-12'),
+(5, 5, 5, '2025-05-01'),
+(6, 6, 6, '2025-05-20'),
+(7, 7, 7, '2025-06-05'),
+(8, 8, 8, '2025-06-22'),
+(9, 9, 9, '2025-07-10'),
+(10, 10, 10, '2025-07-15'),
+(11, 11, 11, '2025-08-01'),
+(12, 12, 12, '2025-08-12'),
+(13, 13, 13, '2025-09-01'),
+(14, 14, 14, '2025-09-20'),
+(15, 15, 15, '2025-10-10'),
+(16, 16, 16, '2025-10-30'),
+(17, 17, 17, '2025-11-01'),
+(18, 18, 18, '2025-11-21'),
+(19, 19, 19, '2025-12-05'),
+(20, 20, 20, '2025-12-15'),
+(21, 21, 21, '2026-01-05'),
+(22, 22, 22, '2026-01-25'),
+(23, 23, 23, '2026-02-10'),
+(24, 24, 24, '2026-02-28'),
+(25, 25, 25, '2026-03-15'),
+(26, 26, 26, '2026-04-01'),
+(27, 27, 27, '2026-04-10'),
+(28, 28, 28, '2026-05-01'),
+(29, 29, 29, '2026-05-20'),
+(30, 30, 30, '2026-06-01');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for DRUG_INTERACTION Table 
+-- ------------------------------------------------------------
 INSERT INTO DRUG_INTERACTION (Medication1ID, Medication2ID, InteractionDetails) VALUES
-(1, 2, 'Increased risk of hypotension');
+(1, 2, 'Increased risk of hypotension'),
+(2, 3, 'May cause dizziness'),
+(3, 4, 'Avoid combining with alcohol'),
+(4, 5, 'May cause stomach irritation'),
+(5, 6, 'Increased risk of bleeding'),
+(6, 7, 'May reduce blood pressure'),
+(7, 8, 'Can cause drowsiness'),
+(8, 9, 'Risk of arrhythmia'),
+(9, 10, 'May cause nausea and vomiting'),
+(10, 11, 'Increased risk of kidney damage'),
+(11, 12, 'Can cause confusion'),
+(12, 13, 'May interact with other medications'),
+(13, 14, 'Increased risk of seizures'),
+(14, 15, 'May cause respiratory depression'),
+(15, 16, 'Increased risk of heart attack'),
+(16, 17, 'May interact with grapefruit'),
+(17, 18, 'May affect liver function'),
+(18, 19, 'Can cause kidney stones'),
+(19, 20, 'Increased risk of stroke'),
+(20, 21, 'May reduce effectiveness of birth control'),
+(21, 22, 'May cause dizziness and nausea'),
+(22, 23, 'Increased risk of infections'),
+(23, 24, 'May interact with alcohol'),
+(24, 25, 'May cause severe allergic reactions'),
+(25, 1, 'Increased risk of bleeding');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for ALERT Table 
+-- ------------------------------------------------------------
 INSERT INTO ALERT (PatientID, AlertType, Message, Date) VALUES
 (1, 'Drug Interaction', 'Potential interaction between Metformin and Lisinopril', '2025-03-02'),
-(2, 'Progress', 'Patient requires follow-up visit', '2025-03-06');
+(2, 'Progress', 'Patient requires follow-up visit', '2025-03-06'),
+(3, 'Drug Interaction', 'Potential interaction between Aspirin and Ibuprofen', '2025-03-10'),
+(4, 'Progress', 'Patient requires blood pressure check', '2025-03-12'),
+(5, 'Drug Interaction', 'Potential interaction between Metoprolol and Amlodipine', '2025-03-15'),
+(6, 'Progress', 'Patient requires follow-up visit', '2025-03-18'),
+(7, 'Drug Interaction', 'Potential interaction between Sertraline and Fluoxetine', '2025-03-20'),
+(8, 'Progress', 'Patient requires lab results review', '2025-03-22'),
+(9, 'Drug Interaction', 'Potential interaction between Gabapentin and Pregabalin', '2025-03-25'),
+(10, 'Progress', 'Patient requires follow-up visit', '2025-03-27'),
+(11, 'Drug Interaction', 'Potential interaction between Clopidogrel and Warfarin', '2025-03-30'),
+(12, 'Progress', 'Patient requires follow-up visit', '2025-04-02'),
+(13, 'Drug Interaction', 'Potential interaction between Ibuprofen and Naproxen', '2025-04-05'),
+(14, 'Progress', 'Patient requires lab results review', '2025-04-07'),
+(15, 'Drug Interaction', 'Potential interaction between Allopurinol and Furosemide', '2025-04-10'),
+(16, 'Progress', 'Patient requires follow-up visit', '2025-04-12'),
+(17, 'Drug Interaction', 'Potential interaction between Losartan and Hydrochlorothiazide', '2025-04-15'),
+(18, 'Progress', 'Patient requires blood pressure check', '2025-04-17'),
+(19, 'Drug Interaction', 'Potential interaction between Omeprazole and Pantoprazole', '2025-04-20'),
+(20, 'Progress', 'Patient requires lab results review', '2025-04-22'),
+(21, 'Drug Interaction', 'Potential interaction between Doxycycline and Ciprofloxacin', '2025-04-25'),
+(22, 'Progress', 'Patient requires follow-up visit', '2025-04-27'),
+(23, 'Drug Interaction', 'Potential interaction between Fluoxetine and Sertraline', '2025-04-30'),
+(24, 'Progress', 'Patient requires lab results review', '2025-05-02'),
+(25, 'Drug Interaction', 'Potential interaction between Hydrocodone and Oxycodone', '2025-05-05'),
+(26, 'Progress', 'Patient requires follow-up visit', '2025-05-07'),
+(27, 'Drug Interaction', 'Potential interaction between Metformin and Glibenclamide', '2025-05-10'),
+(28, 'Progress', 'Patient requires lab results review', '2025-05-12'),
+(29, 'Drug Interaction', 'Potential interaction between Amiodarone and Warfarin', '2025-05-15'),
+(30, 'Progress', 'Patient requires follow-up visit', '2025-05-17');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for TREATMENT_PROGRESS Table
+-- ------------------------------------------------------------
 INSERT INTO TREATMENT_PROGRESS (PatientID, Date, SymptomScore, LabResults) VALUES
 (1, '2025-03-10', 'Mild', 'HbA1c: 7.2%'),
-(2, '2025-03-12', 'Moderate', 'BP: 140/90');
+(2, '2025-03-12', 'Moderate', 'BP: 140/90'),
+(3, '2025-03-15', 'Severe', 'Cholesterol: 245 mg/dL'),
+(4, '2025-03-18', 'Mild', 'Blood Pressure: 125/80'),
+(5, '2025-03-20', 'Moderate', 'HbA1c: 6.9%'),
+(6, '2025-03-22', 'Severe', 'Cholesterol: 200 mg/dL'),
+(7, '2025-03-25', 'Mild', 'Blood Pressure: 120/75'),
+(8, '2025-03-28', 'Moderate', 'Cholesterol: 230 mg/dL'),
+(9, '2025-03-30', 'Severe', 'HbA1c: 8.1%'),
+(10, '2025-04-02', 'Mild', 'Blood Pressure: 118/76'),
+(11, '2025-04-05', 'Moderate', 'Cholesterol: 220 mg/dL'),
+(12, '2025-04-07', 'Severe', 'HbA1c: 7.4%'),
+(13, '2025-04-10', 'Mild', 'Blood Pressure: 115/70'),
+(14, '2025-04-12', 'Moderate', 'Cholesterol: 240 mg/dL'),
+(15, '2025-04-15', 'Severe', 'HbA1c: 8.2%'),
+(16, '2025-04-18', 'Mild', 'Blood Pressure: 110/65'),
+(17, '2025-04-20', 'Moderate', 'Cholesterol: 250 mg/dL'),
+(18, '2025-04-22', 'Severe', 'HbA1c: 7.8%'),
+(19, '2025-04-25', 'Mild', 'Blood Pressure: 112/72'),
+(20, '2025-04-27', 'Moderate', 'Cholesterol: 235 mg/dL'),
+(21, '2025-04-30', 'Severe', 'HbA1c: 8.0%'),
+(22, '2025-05-02', 'Mild', 'Blood Pressure: 118/78'),
+(23, '2025-05-05', 'Moderate', 'Cholesterol: 215 mg/dL'),
+(24, '2025-05-07', 'Severe', 'HbA1c: 7.6%'),
+(25, '2025-05-10', 'Mild', 'Blood Pressure: 116/70'),
+(26, '2025-05-12', 'Moderate', 'Cholesterol: 245 mg/dL'),
+(27, '2025-05-15', 'Severe', 'HbA1c: 8.3%'),
+(28, '2025-05-17', 'Mild', 'Blood Pressure: 120/80'),
+(29, '2025-05-20', 'Moderate', 'Cholesterol: 255 mg/dL'),
+(30, '2025-05-22', 'Severe', 'HbA1c: 8.4%');
 
+-- ------------------------------------------------------------
+-- Sample Data Inserts for MEDICATION_RECOMMENDATION Table (50 - 75 rows)
+-- ------------------------------------------------------------
 INSERT INTO MEDICATION_RECOMMENDATION (PatientID, MedicationID, Date) VALUES
 (1, 1, '2025-03-15'),
-(2, 2, '2025-03-16');
+(2, 2, '2025-03-16'),
+(3, 3, '2025-03-20'),
+(4, 4, '2025-03-22'),
+(5, 5, '2025-03-25'),
+(6, 6, '2025-03-28'),
+(7, 7, '2025-03-30'),
+(8, 8, '2025-04-02'),
+(9, 9, '2025-04-05'),
+(10, 10, '2025-04-07'),
+(11, 11, '2025-04-10'),
+(12, 12, '2025-04-12'),
+(13, 13, '2025-04-15'),
+(14, 14, '2025-04-17'),
+(15, 15, '2025-04-20'),
+(16, 16, '2025-04-22'),
+(17, 17, '2025-04-25'),
+(18, 18, '2025-04-27'),
+(19, 19, '2025-04-30'),
+(20, 20, '2025-05-02'),
+(21, 21, '2025-05-05'),
+(22, 22, '2025-05-07'),
+(23, 23, '2025-05-10'),
+(24, 24, '2025-05-12'),
+(25, 25, '2025-05-15'),
+(26, 26, '2025-05-17'),
+(27, 27, '2025-05-20'),
+(28, 28, '2025-05-22'),
+(29, 29, '2025-05-25'),
+(30, 30, '2025-05-28');
 
-INSERT INTO ROLE (RoleName) VALUES
-('Admin'),
-('User');
-
-INSERT INTO SYSTEM_USER (Username, HashedPassword, RoleID) VALUES
-('admin_user', 'hashed_password_1', 1),
-('regular_user', 'hashed_password_2', 2);
-
-INSERT INTO SYSTEM_LOG (EventType, Message, UserID) VALUES
-('Login', 'Admin user logged in', 1),
-('Error', 'Failed to sync data', 2);
-
-INSERT INTO EXTERNAL_SYSTEM (Name, API_Endpoint) VALUES
-('Hospital Database', 'https://api.hospital.com'),
-('Pharmacy System', 'https://api.pharmacy.com');
-
-INSERT INTO ENCRYPTION_SETTINGS (Parameter, Value) VALUES
-('EncryptionAlgorithm', 'AES-256'),
-('KeyRotationInterval', '90 days');
-
-INSERT INTO CLEANUP_TASK (Description, ScheduledDate, Status) VALUES
-('Archive inactive patient records', '2025-04-01', 'Scheduled'),
-('Remove outdated genetic profiles', '2025-04-05', 'Scheduled');
-
-commit
+COMMIT;
