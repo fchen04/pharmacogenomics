@@ -19,15 +19,11 @@ st.write('### What would you like to do today?')
 
 # Display button to view patient's treatment progress
 if st.button('View Patient Treatment Progress', type='primary', use_container_width=True):
-    st.switch_page('pages/01_Doctor_Treatment_Progress.py')
-
-# Display button to view/update prescriptions for patients
-if st.button('View/Update Prescriptions', type='primary', use_container_width=True):
-    st.switch_page('pages/02_Doctor_View_Update_Prescriptions.py')
+    st.switch_page('pages/02_patient_progress.py')
 
 # Display button to view drug interaction alerts
 if st.button('View Drug Interaction Alerts', type='primary', use_container_width=True):
-    st.switch_page('pages/03_Doctor_Drug_Interactions.py')
+    st.switch_page('pages/01_doctor_medication_alerts.py')
 
 # Display button to manage treatment adjustments based on genetic data
 if st.button('Manage Treatment Adjustments', type='primary', use_container_width=True):

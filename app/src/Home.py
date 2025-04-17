@@ -55,7 +55,7 @@ if st.button("Act as Dr. Emily Zhang, A Doctor",
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Doctor Persona")
-    st.switch_page('pages/00_doctor_home.py')
+    st.switch_page('pages/01_doctor_home.py')
 
 if st.button('Act as Sarah Johnson, a Patient', 
              type='primary', 
@@ -64,7 +64,7 @@ if st.button('Act as Sarah Johnson, a Patient',
     st.session_state['role'] = 'patient'
     st.session_state['first_name'] = 'Sarah Johnson'
     logger.info("Logging in as Patient Persona")
-    st.switch_page('pages/00_patient_home.py')
+    st.switch_page('pages/02_patient_home.py')
 
 if st.button('Act as Jason Lee, an Analyst', 
              type='primary', 
@@ -73,7 +73,7 @@ if st.button('Act as Jason Lee, an Analyst',
     st.session_state['role'] = 'analyst'
     st.session_state['first_name'] = 'Jason Lee'
     logger.info("Logging in as Analyst Persona")
-    st.switch_page('pages/00_analyst_home.py')
+    st.switch_page('pages/03_analyst_home.py')
 
 if st.button('Act as System Administrator', 
              type='primary', 
@@ -82,4 +82,4 @@ if st.button('Act as System Administrator',
     st.session_state['role'] = 'administrator'
     st.session_state['first_name'] = 'SysAdmin'
     logger.info("Logging in as Admin Persona")
-    st.switch_page('pages/00_admin_home.py')
+    st.switch_page('pages/04_admin_home.py')
