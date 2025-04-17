@@ -13,3 +13,9 @@ plotly
 seaborn
 scikit-learn
 shap
+flask
+flask-mysql
+flask-mysqldb
+pymysql
+dotenv
+Faker

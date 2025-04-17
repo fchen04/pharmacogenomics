@@ -14,46 +14,52 @@ def AboutPageNav():
     st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
 
 
-#### ------------------------ Examples for Role of pol_strat_advisor ------------------------
-def PolStratAdvHomeNav():
-    st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
-    )
+#### ------------------------ Admin Role ------------------------
+def AdminHomeNav():
+    st.sidebar.page_link("pages/00_Admin_Home.py", label="Admin Home", icon="👩‍💻")
 
 
-def WorldBankVizNav():
-    st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
-    )
+def AdminManageUsersNav():
+    st.sidebar.page_link("pages/01_Admin_Manage_Users.py", label="Manage Users", icon="👨‍⚖️")
 
 
-def MapDemoNav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
+#### ------------------------ Analyst Role ------------------------
+def AnalystHomeNav():
+    st.sidebar.page_link("pages/00_Analyst_Home.py", label="Analyst Home", icon="📊")
 
 
-## ------------------------ Examples for Role of usaid_worker ------------------------
-def ApiTestNav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
+def AnalystReportsNav():
+    st.sidebar.page_link("pages/01_Analyst_Reports.py", label="View Reports", icon="📈")
 
 
-def PredictionNav():
-    st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
-    )
+def AnalystTrendsNav():
+    st.sidebar.page_link("pages/02_Analyst_Trends.py", label="Genetic Trends", icon="🔬")
 
 
-def ClassificationNav():
-    st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
-    )
+#### ------------------------ Doctor Role ------------------------
+def DoctorHomeNav():
+    st.sidebar.page_link("pages/00_Doctor_Home.py", label="Doctor Home", icon="🩺")
 
 
-#### ------------------------ System Admin Role ------------------------
-def AdminPageNav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-    st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
-    )
+def DoctorPatientViewNav():
+    st.sidebar.page_link("pages/01_Doctor_Patient_View.py", label="Patient View", icon="👩‍⚕️")
+
+
+def DoctorMedicationNav():
+    st.sidebar.page_link("pages/02_Doctor_Medication_Advice.py", label="Medication Advice", icon="💊")
+
+
+#### ------------------------ Patient Role ------------------------
+def PatientHomeNav():
+    st.sidebar.page_link("pages/00_Patient_Home.py", label="Patient Home", icon="👨‍⚕️")
+
+
+def PatientMedicationNav():
+    st.sidebar.page_link("pages/01_Patient_Medication_History.py", label="Medication History", icon="💊")
+
+
+def PatientProgressNav():
+    st.sidebar.page_link("pages/02_Patient_Progress.py", label="Progress Monitoring", icon="📊")
 
 
 # --------------------------------Links Function -----------------------------------------------
@@ -77,21 +83,28 @@ def SideBarLinks(show_home=False):
     # Show the other page navigators depending on the users' role.
     if st.session_state["authenticated"]:
 
-        # Show World Bank Link and Map Demo Link if the user is a political strategy advisor role.
-        if st.session_state["role"] == "pol_strat_advisor":
-            PolStratAdvHomeNav()
-            WorldBankVizNav()
-            MapDemoNav()
+      # Show the Admin links if the user is an administrator
+        if st.session_state["role"] == "admin":
+            AdminHomeNav()
+            AdminManageUsersNav()
 
-        # If the user role is usaid worker, show the Api Testing page
-        if st.session_state["role"] == "usaid_worker":
-            PredictionNav()
-            ApiTestNav()
-            ClassificationNav()
+        # If the user role is analyst, show the Analyst-specific pages
+        if st.session_state["role"] == "analyst":
+            AnalystHomeNav()
+            AnalystReportsNav()
+            AnalystTrendsNav()
 
-        # If the user is an administrator, give them access to the administrator pages
-        if st.session_state["role"] == "administrator":
-            AdminPageNav()
+        # If the user role is doctor, show doctor-specific pages
+        if st.session_state["role"] == "doctor":
+            DoctorHomeNav()
+            DoctorPatientViewNav()
+            DoctorMedicationNav()
+
+        # If the user role is patient, show patient-specific pages
+        if st.session_state["role"] == "patient":
+            PatientHomeNav()
+            PatientMedicationNav()
+            PatientProgressNav()
 
     # Always show the About page at the bottom of the list of links
     AboutPageNav()
