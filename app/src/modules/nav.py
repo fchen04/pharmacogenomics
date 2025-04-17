@@ -91,14 +91,14 @@ def SideBarLinks(show_home=False):
             DoctorHomeNav()
             DoctorPatientViewNav()
             DoctorMedicationNav()
-            DoctorViewGeneData
+            DoctorViewGeneData()
 
         # If the user role is patient, show patient-specific pages
         if st.session_state["role"] == "patient":
             PatientHomeNav()
             PatientMedicationHistoryNav()
             PatientProgressNav()
-            PatientGeneticProfileNav
+            PatientGeneticProfileNav()
 
         # If the user role is analyst, show the Analyst-specific pages
         if st.session_state["role"] == "analyst":
