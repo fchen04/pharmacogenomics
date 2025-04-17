@@ -1,8 +1,6 @@
 import logging
-logger = logging.getLogger(__name__)
-
 import streamlit as st
-from api.backend.db_connection.db_connection import db
+import requests
 from modules.nav import SideBarLinks
 
 # Set up the page configuration
@@ -11,21 +9,25 @@ st.set_page_config(layout="wide")
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-# Fetch medication alerts for the doctor
-cursor = db.get_db().cursor()
-cursor.execute("""
-    SELECT p.Name AS PatientName, a.AlertType, a.Message, a.Date, m.Name AS MedicationName
-    FROM ALERT a
-    JOIN PATIENT p ON a.PatientID = p.PatientID
-    JOIN PRESCRIPTION pr ON pr.PatientID = p.PatientID
-    JOIN MEDICATION m ON pr.MedicationID = m.MedicationID
-    WHERE a.AlertType = 'Drug Interaction'
-""")
+# Define API base URL
+API_BASE_URL = "http://host.docker.internal:4000/api"
 
-alerts = cursor.fetchall()
+# Function to fetch medication alerts from the API
+def fetch_medication_alerts():
+    try:
+        response = requests.get(f"{API_BASE_URL}/doctor/alerts")
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching medication alerts: {e}")
+        return []
+
+# Fetch medication alerts for the doctor
+alerts = fetch_medication_alerts()
 
 st.title(f"Medication Alerts for Dr. {st.session_state['last_name']}")
 
+# Display alerts if available
 if alerts:
     for alert in alerts:
         st.write(f"**Patient**: {alert['PatientName']}")
@@ -43,25 +45,23 @@ st.write("### Medication Interaction Advice")
 # Button to review a more comprehensive medication interaction report
 if st.button("Review Full Medication Interaction Details", type="primary", use_container_width=True):
     # Fetch more detailed information about drug interactions
-    cursor.execute("""
-        SELECT m1.Name AS Medication1, m2.Name AS Medication2, di.InteractionDetails
-        FROM DRUG_INTERACTION di
-        JOIN MEDICATION m1 ON di.Medication1ID = m1.MedicationID
-        JOIN MEDICATION m2 ON di.Medication2ID = m2.MedicationID
-    """)
-    
-    interactions = cursor.fetchall()
+    try:
+        response = requests.get(f"{API_BASE_URL}/doctor/drug_interactions")
+        response.raise_for_status()
+        interactions = response.json()
 
-    if interactions:
-        st.write("### Full Medication Interaction Details")
-        for interaction in interactions:
-            st.write(f"**Medication 1**: {interaction['Medication1']}")
-            st.write(f"**Medication 2**: {interaction['Medication2']}")
-            st.write(f"**Interaction Details**: {interaction['InteractionDetails']}")
-            st.write("-" * 50)
-    else:
-        st.write("No detailed drug interaction information found.")
-    
+        if interactions:
+            st.write("### Full Medication Interaction Details")
+            for interaction in interactions:
+                st.write(f"**Medication 1**: {interaction['Medication1']}")
+                st.write(f"**Medication 2**: {interaction['Medication2']}")
+                st.write(f"**Interaction Details**: {interaction['InteractionDetails']}")
+                st.write("-" * 50)
+        else:
+            st.write("No detailed drug interaction information found.")
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching drug interactions: {e}")
+
     st.write("You can use this information to make informed decisions about the patient's medication regimen.")
 
 # Option to go back to the doctor home page
