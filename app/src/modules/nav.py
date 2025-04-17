@@ -19,8 +19,8 @@ def DoctorHomeNav():
 def DoctorPatientViewNav():
     st.sidebar.page_link("pages/01_doctor_patient_list.py", label="Patient View", icon="👩‍⚕️")
 
-def DoctorMedicationNav():
-    st.sidebar.page_link("pages/01_doctor_medication_advice.py", label="Medication Advice", icon="💊")
+def DoctorMedicationAlerts():
+    st.sidebar.page_link("pages/01_doctor_medication_alerts.py", label="Medication Alerts", icon="💊")
 
 def DoctorViewGeneData():
     st.sidebar.page_link("pages/01_doctor_view_data.py", label="Data View", icon="📊")
@@ -90,7 +90,7 @@ def SideBarLinks(show_home=False):
         if st.session_state["role"] == "doctor":
             DoctorHomeNav()
             DoctorPatientViewNav()
-            DoctorMedicationNav()
+            DoctorMedicationAlerts()
             DoctorViewGeneData()
 
         # If the user role is patient, show patient-specific pages
