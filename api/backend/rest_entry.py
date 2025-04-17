@@ -1,9 +1,9 @@
 from flask import Flask
 from backend.db_connection import db
-from backend.admin_routes import admins
-from backend.analyst_routes import analysts
-from backend.doctor_routes import doctors
-from backend.patient_routes import patients
+from backend.admin.admin_routes import admins
+from backend.analyst.analyst_routes import analysts
+from backend.doctor.doctor_routes import doctors
+from backend.patient.patient_routes import patients
 import os
 from dotenv import load_dotenv
 

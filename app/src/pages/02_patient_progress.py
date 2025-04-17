@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 
 import streamlit as st
 from modules.nav import SideBarLinks
-from api.backend.db_connection import db
+from api.backend.db_connection.db_connection import db
 
 # Set up the page configuration
 st.set_page_config(layout="wide")
@@ -39,4 +39,4 @@ else:
 
 # Option to go back to the patient home page
 if st.button("Back to Home", type="primary", use_container_width=True):
-    st.switch_page('00_Patient_Home.py')
+    st.switch_page('02_patient_home.py')

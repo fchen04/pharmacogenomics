@@ -42,3 +42,7 @@ Stay tuned for more updates and features to come, including advanced genetic dat
 3. Log in as one of the predefined users (Admin, Doctor, Analyst, or Patient) to explore the app’s functionalities.
     """
         )
+
+# Option to go back to home page
+if st.button("Back to Home", type="primary", use_container_width=True):
+    st.switch_page('Home.py')

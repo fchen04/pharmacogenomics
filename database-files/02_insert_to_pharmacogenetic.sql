@@ -273,7 +273,7 @@ INSERT INTO TREATMENT_PROGRESS (PatientID, Date, SymptomScore, LabResults) VALUE
 (30, '2025-05-22', 'Severe', 'HbA1c: 8.4%');
 
 -- ------------------------------------------------------------
--- Sample Data Inserts for MEDICATION_RECOMMENDATION Table (50 - 75 rows)
+-- Sample Data Inserts for MEDICATION_RECOMMENDATION Table 
 -- ------------------------------------------------------------
 INSERT INTO MEDICATION_RECOMMENDATION (PatientID, MedicationID, Date) VALUES
 (1, 1, '2025-03-15'),

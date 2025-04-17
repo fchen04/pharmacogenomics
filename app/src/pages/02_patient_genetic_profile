@@ -38,3 +38,7 @@ else:
 # Option to update genetic profile or ask for new recommendations
 if st.button("Update My Genetic Profile", type="primary", use_container_width=True):
     st.write("Please contact your healthcare provider for genetic testing.")
+
+# Option to go back to the patient home page
+if st.button("Back to Home", type="primary", use_container_width=True):
+    st.switch_page('02_patient_home.py')

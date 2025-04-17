@@ -1,10 +1,19 @@
-#------------------------------------------------------------
-# This file creates a shared DB connection resource
-#------------------------------------------------------------
-from flaskext.mysql import MySQL
-from pymysql import cursors
+import pymysql
+import os
+from dotenv import load_dotenv
 
+# Load environment variables if not already loaded
+load_dotenv()
 
-# the parameter instructs the connection to return data 
-# as a dictionary object. 
-db = MySQL(cursorclass=cursors.DictCursor)
+def get_db_connection():
+    """
+    Create and return a connection to the MySQL database for the PharmacogeneticAppDB.
+    """
+    connection = pymysql.connect(
+        host=os.getenv('DB_HOST', 'db'),  
+        user=os.getenv('DB_USER', 'root'),  
+        password=os.getenv('MYSQL_ROOT_PASSWORD', ''),  
+        database=os.getenv('DB_NAME', 'PharmacogeneticAppDB'),  #
+        cursorclass=pymysql.cursors.DictCursor 
+    )
+    return connection

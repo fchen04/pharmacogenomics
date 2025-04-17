@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 
 import streamlit as st
 from modules.nav import SideBarLinks
-from api.backend.db_connection import db
+from api.backend.db_connection.db_connection import db
 
 # Set up the page configuration
 st.set_page_config(layout="wide")
@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 # Show appropriate sidebar links for the role of the currently logged in user
 SideBarLinks()
 
-st.title(f"Welcome Doctor: {st.session_state['first_name']} {st.session_state['last_name']}")
+st.title(f"Welcome Dr. {st.session_state['last_name']}")
 
 # Show patient list for the doctor
 st.write("### Your Patient List:")
@@ -38,8 +38,8 @@ else:
 
 # Option to view a specific patient's details
 if st.button("View Patient Medication History", type="primary", use_container_width=True):
-    st.switch_page('01_Patient_Medication_History.py')
+    st.switch_page('02_patient_medication_history.py')
 
 # Option to go back to doctor home page
 if st.button("Back to Home", type="primary", use_container_width=True):
-    st.switch_page('00_Doctor_Home.py')
+    st.switch_page('01_doctor_home.py')

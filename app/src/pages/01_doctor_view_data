@@ -11,20 +11,27 @@ st.set_page_config(layout="wide")
 # Show appropriate sidebar links for the role of the currently logged-in user
 SideBarLinks()
 
-# Display Doctor's home page title
-st.title(f"Welcome Doctor, {st.session_state['first_name']}.")
+# Fetch patient genetic profiles for the doctor
+cursor = db.get_db().cursor()
+cursor.execute("""
+    SELECT p.Name AS PatientName, g.TestDate, g.GeneticMarkers
+    FROM GENETIC_PROFILE g
+    JOIN PATIENT p ON g.PatientID = p.PatientID
+""")
+genetic_profiles = cursor.fetchall()
 
-# Option to view patient progress
-st.write('### What would you like to do today?')
+st.title(f"Patient Genetic Profiles for Dr. {st.session_state['first_name']}")
 
-# Display button to view patient's treatment progress
-if st.button('View Patient Treatment Progress', type='primary', use_container_width=True):
-    st.switch_page('pages/02_patient_progress.py')
+# Check if there are genetic profiles and display them
+if genetic_profiles:
+    for profile in genetic_profiles:
+        st.write(f"**Patient Name**: {profile['PatientName']}")
+        st.write(f"**Test Date**: {profile['TestDate']}")
+        st.write(f"**Genetic Markers**: {profile['GeneticMarkers']}")
+        st.write("-" * 50)
+else:
+    st.write("No genetic profiles found.")
 
-# Display button to view drug interaction alerts
-if st.button('View Drug Interaction Alerts', type='primary', use_container_width=True):
-    st.switch_page('pages/01_doctor_medication_alerts.py')
-
-# Display button to manage treatment adjustments based on genetic data
-if st.button('Manage Treatment Adjustments', type='primary', use_container_width=True):
-    st.switch_page('pages/04_Doctor_Treatment_Adjustments.py')
+# Option to go back to the doctor home page
+if st.button("Back to Home", type="primary", use_container_width=True):
+    st.switch_page('01_doctor_home.py')

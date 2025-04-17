@@ -51,7 +51,8 @@ if st.button("Act as Dr. Emily Zhang, A Doctor",
     st.session_state['role'] = 'doctor'
     # we add the first name of the user (so it can be displayed on 
     # subsequent pages). 
-    st.session_state['first_name'] = 'Dr. Emily Zhang'
+    st.session_state['first_name'] = 'Emily'
+    st.session_state['last_name'] = 'Zhang'
     # finally, we ask streamlit to switch to another page, in this case, the 
     # landing page for this particular user type
     logger.info("Logging in as Doctor Persona")
@@ -62,24 +63,27 @@ if st.button('Act as Sarah Johnson, a Patient',
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'patient'
-    st.session_state['first_name'] = 'Sarah Johnson'
+    st.session_state['first_name'] = 'Sarah'
+    st.session_state['last_name'] = 'Johnson'
     logger.info("Logging in as Patient Persona")
     st.switch_page('pages/02_patient_home.py')
 
-if st.button('Act as Jason Lee, an Analyst', 
+if st.button('Act as Jason Lee, an Data Analyst', 
              type='primary', 
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'analyst'
-    st.session_state['first_name'] = 'Jason Lee'
-    logger.info("Logging in as Analyst Persona")
+    st.session_state['first_name'] = 'Jason'
+    st.session_state['last_name'] = 'Lee'
+    logger.info("Logging in as Data Analyst Persona")
     st.switch_page('pages/03_analyst_home.py')
 
-if st.button('Act as System Administrator', 
+if st.button('Act as David Roberts, a System Administrator', 
              type='primary', 
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
-    logger.info("Logging in as Admin Persona")
+    st.session_state['first_name'] = 'David'
+    st.session_state['last_name'] = 'Roberts'
+    logger.info("Logging in as System Admin Persona")
     st.switch_page('pages/04_admin_home.py')

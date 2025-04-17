@@ -42,3 +42,7 @@ else:
 # Option to analyze further or view detailed reports
 if st.button("Analyze Genetic Impact Further", type="primary", use_container_width=True):
     st.write("Analyze the genetic impact on a larger dataset of medications and symptoms.")
+
+# Option to go back to analyst home page
+if st.button("Back to Home", type="primary", use_container_width=True):
+    st.switch_page('03_analyst_home.py')

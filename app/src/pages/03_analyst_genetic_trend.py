@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 
 import streamlit as st
 from modules.nav import SideBarLinks
-from api.backend.db_connection import db
+from api.backend.db_connection.db_connection import db
 
 # Set up the page configuration
 st.set_page_config(layout="wide")
@@ -37,8 +37,8 @@ else:
 
 # Option to view medication effectiveness
 if st.button("View Medication Effectiveness", type="primary", use_container_width=True):
-    st.switch_page('04_Analyst_Medication_Effectiveness.py')
+    st.switch_page('03_analyst_prescription_impact.py')
 
 # Option to go back to analyst home page
 if st.button("Back to Home", type="primary", use_container_width=True):
-    st.switch_page('00_Analyst_Home.py')
+    st.switch_page('03_analyst_home.py')
