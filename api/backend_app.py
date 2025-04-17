@@ -1,14 +1,12 @@
 from flask import Flask
-from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 
 # Import blueprints for your project
-from backend.doctor_routes import doctor_bp
-from backend.patient_routes import patient_bp
-from backend.analyst_routes import analyst_bp
-from backend.admin_routes import admin_bp
-from backend.system_admin.system_admin_routes import system_admin_bp  # Optional system admin blueprint
+from backend.doctor.doctor_routes import doctor_bp
+from backend.patient.patient_routes import patient_bp
+from backend.analyst.analyst_routes import analyst_bp
+from backend.admin.admin_routes import admin_bp
 
 # Load environment variables
 load_dotenv()
@@ -16,7 +14,6 @@ load_dotenv()
 def create_app():
     # Initialize Flask app
     app = Flask(__name__)
-    CORS(app)  # Enable CORS for all routes
 
     # Register blueprints for each role/persona
     app.register_blueprint(doctor_bp, url_prefix='/api/doctor')
@@ -32,7 +29,7 @@ def create_app():
     app.logger.info("Admin blueprint registered")
 
     # Register optional system admin blueprint
-    app.register_blueprint(system_admin_bp, url_prefix='/api/system_admin')
+    app.register_blueprint(admin_bp, url_prefix='/api/system_admin')
     app.logger.info("System Admin blueprint registered")
     
     # Default route
