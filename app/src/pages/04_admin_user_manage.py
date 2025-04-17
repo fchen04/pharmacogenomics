@@ -1,39 +1,44 @@
 import logging
-logger = logging.getLogger(__name__)
-
 import streamlit as st
-from api.backend.db_connection import db
+import requests
 from modules.nav import SideBarLinks
 
-# Set up the page configuration
-st.set_page_config(layout="wide")
+# Set up logging
+logger = logging.getLogger(__name__)
 
-# Show appropriate sidebar links for the role of the currently logged-in user
+# Set up page configuration
+st.set_page_config(layout="wide")
 SideBarLinks()
 
+# API base URL
+API_URL = "http://host.docker.internal:4000/api"
+
+# Check if current page is user management
 if st.session_state.get('page') == 'user_management':
     st.title(f"Manage System Users, {st.session_state['first_name']}")
 
-    # Fetch all users from the database
-    cursor = db.get_db().cursor()
-    cursor.execute("""
-        SELECT * FROM SYSTEM_USER
-    """)
-    users = cursor.fetchall()
+    # Fetch all users from the API
+    try:
+        response = requests.get(f"{API_URL}/admin/users")
+        response.raise_for_status()
+        users = response.json()
 
-    if users:
-        for user in users:
-            st.write(f"**Username**: {user['Username']}")
-            st.write(f"**Role**: {user['RoleID']}")
-            st.write("-" * 50)
-    else:
-        st.write("No users found.")
+        if users:
+            for user in users:
+                st.write(f"**Username**: {user['Username']}")
+                st.write(f"**Role**: {user['RoleID']}")
+                st.write("-" * 50)
+        else:
+            st.write("No users found.")
+    except requests.exceptions.RequestException as e:
+        st.error("Failed to fetch system users.")
+        logger.error(f"User fetch request failed: {e}")
 
-    # Option to add new user or manage existing ones
+    # Add new user interface trigger
     if st.button("Add New User", type="primary", use_container_width=True):
         st.write("Form to add new users goes here...")
-        # You can implement a form to add a new user here or navigate to another page for that.
+        # You can build or navigate to a form-based page for user creation
 
-# Option to go back to admin home page
+# Back button to admin home
 if st.button("Back to Home", type="primary", use_container_width=True):
     st.switch_page('04_admin_home.py')

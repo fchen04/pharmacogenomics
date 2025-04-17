@@ -1,5 +1,5 @@
 from flask import Flask
-from backend.db_connection import db
+from db_connection.db_connection import db
 from backend.admin.admin_routes import admins
 from backend.analyst.analyst_routes import analysts
 from backend.doctor.doctor_routes import doctors

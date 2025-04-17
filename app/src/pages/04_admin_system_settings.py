@@ -2,7 +2,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 import streamlit as st
-from api.backend.db_connection import db
+from api.backend.db_connection.db_connection import db
 from modules.nav import SideBarLinks
 
 # Set up the page configuration
