@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 
 import streamlit as st
 from modules.nav import SideBarLinks
-from api.backend.db_connection import db
+from api.backend.db_connection.db_connection import db
 
 # Set up the page configuration
 st.set_page_config(layout="wide")
